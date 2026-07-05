@@ -1,84 +1,76 @@
-# 生日五行金融密碼計算器
+# 115 人工智慧金融投資決策 Lab
 
-本專案實作「生日五行金融密碼計算器」，提供 terminal 與 Jupyter Notebook 操作模式；同一份 Notebook 可在本機 Jupyter 與 Google Colab 執行。使用者輸入西元出生年月日後，程式會計算生日數字密碼，依河圖五行對應屬性，同時顯示金融投資風格建議；Notebook 模式另提供 Matplotlib 圖表呈現五行與數字關係。
+本專案整理「人工智慧金融投資決策」課程作業與實作練習。各作業會依序放在 `HW1/`、`HW2/`、`HW3/` 等目錄中，根目錄 README 作為專案總覽、環境建置與執行入口索引。
 
-## 功能
+## Table of Contents
 
-- 使用 `DatePicker` 選擇出生日期。
-- 將生日年月日的每一位數字拆開加總。
-- 若加總結果大於等於 10，持續拆位相加直到得到 0 到 9 的個位數。
-- 依河圖五行對應生日密碼：
-  - `1, 6`：木
-  - `2, 7`：火
-  - `5, 0`：土
-  - `4, 9`：金
-  - `3, 8`：水
-- Terminal 模式輸出文字版河圖五行數字對應表。
-- Notebook 模式使用 Matplotlib 顯示河圖五行圖，並高亮使用者的生日密碼。
-- 顯示五行金融投資建議與風險提醒。
+- [專案摘要](#專案摘要)
+- [目錄結構](#目錄結構)
+- [環境建置](#環境建置)
+- [執行方式](#執行方式)
+- [作業索引](#作業索引)
 
-## 使用 uv 安裝依賴
+## 專案摘要
 
-本機執行時，本專案使用 `uv` 管理 Python 版本、虛擬環境與依賴。請先確認已安裝 `uv`：
+目前已完成 HW1「生日五行金融密碼計算器」，提供 terminal 與 Jupyter Notebook 操作方式。使用者輸入西元出生年月日後，程式會計算生日數字密碼，並依河圖五行對應規則判斷元素屬性。
+
+後續 HW2、HW3 等作業會持續新增至獨立目錄，並在本 README 的作業索引補上摘要與執行方式。
+
+## 目錄結構
+
+```text
+.
+├── HW1/
+│   ├── README.md
+│   ├── birthday_wuxing_finance_calculator.py
+│   └── birthday_wuxing_finance_calculator.ipynb
+├── README.md
+├── main.py
+├── pyproject.toml
+└── uv.lock
+```
+
+## 環境建置
+
+本專案使用 `uv` 管理 Python 版本、虛擬環境與依賴。請先確認已安裝 `uv`：
 
 ```bash
 uv --version
 ```
 
-在專案資料夾中同步依賴：
+在專案根目錄同步依賴：
 
 ```bash
 uv sync
 ```
 
-`uv sync` 會依照 `pyproject.toml` 與 `uv.lock` 建立 `.venv`，並安裝 JupyterLab、ipywidgets 與 Matplotlib。Google Colab 不需要執行 `uv sync`，Notebook 內的第一個環境設定 cell 會在 Colab 缺少套件或中文字型時安裝 `ipywidgets`、`matplotlib` 與 Noto CJK 字型。
+`uv sync` 會依照 `pyproject.toml` 與 `uv.lock` 建立 `.venv`，並安裝目前作業需要的 JupyterLab、Notebook、ipywidgets 與 Matplotlib。
 
-## 使用方式
+## 執行方式
 
-### Option 1：Terminal 操作模式
+### Terminal
 
-在專案資料夾中直接帶入生日參數執行：
-
-```bash
-uv run python main.py 2000-01-01
-```
-
-生日參數支援下列格式：
-
-- `YYYY-MM-DD`，例如 `2000-01-01`
-- `YYYYMMDD`，例如 `20000101`
-- `YYYY/MM/DD`，例如 `2000/01/01`
-
-也可以不帶生日參數，進入互動輸入模式：
+HW1 terminal 版執行入口：
 
 ```bash
-uv run python main.py
+uv run python HW1/birthday_wuxing_finance_calculator.py 2000-01-01
 ```
 
-Terminal 模式會輸出下列結果：
+若不帶生日參數，程式會進入互動輸入模式：
 
-- 生日數字拆位加總流程
-- 最終生日數字密碼
-- 河圖五行屬性
-- 文字版河圖五行數字對應表
-- 金融投資風格建議
-- 風險提醒
+```bash
+uv run python HW1/birthday_wuxing_finance_calculator.py
+```
 
-### Option 2：Jupyter Notebook 操作模式
+### JupyterLab
 
-在專案資料夾中啟動 JupyterLab：
+在專案根目錄啟動 JupyterLab：
 
 ```bash
 uv run jupyter lab
 ```
 
-開啟下列檔案：
-
-```text
-birthday_wuxing_finance_calculator.ipynb
-```
-
-依序執行 Notebook 中的儲存格，在「出生日期」欄位選擇西元年月日，再按下「計算生日五行金融密碼」按鈕。
+開啟 `HW1/birthday_wuxing_finance_calculator.ipynb`，依序執行 Notebook cells。
 
 也可以使用傳統 Notebook 介面：
 
@@ -86,57 +78,10 @@ birthday_wuxing_finance_calculator.ipynb
 uv run jupyter notebook
 ```
 
-Notebook 模式會顯示生日數字拆位加總流程、最終生日數字密碼、河圖五行屬性、Matplotlib 河圖五行圖與金融投資風格建議。
+## 作業索引
 
-### Option 3：Google Colab 操作模式
-
-在 Google Colab 開啟或上傳下列檔案：
-
-```text
-birthday_wuxing_finance_calculator.ipynb
-```
-
-依序由上到下執行 Notebook cells。第一個「環境設定」cell 會偵測 Colab，並在缺少套件或中文字型時安裝 Notebook 需要的 `ipywidgets`、`matplotlib` 與 Noto CJK 字型；不需要在 Colab 安裝或使用 `uv`。
-
-Colab 支援 ipywidgets，因此可直接使用 Notebook 中相同的 `DatePicker` 與「計算生日五行金融密碼」按鈕操作。
-
-## 結果欄位說明
-
-- **生日數字密碼**：由出生年月日所有數字反覆加總後得到的 0 到 9 個位數。
-- **五行屬性**：依河圖數字對應木、火、土、金、水。
-- **Matplotlib 圖表**：外圈顯示 0 到 9，每個數字依五行著色，使用者的生日密碼會放大並加上外框。
-- **金融建議**：依五行屬性提供投資風格、適合關注方向與風險提醒。
-
-## 常見問題
-
-### Widget 沒有顯示
-
-本機 Jupyter 請確認已安裝 `ipywidgets`，並重新啟動 Jupyter kernel：
-
-```bash
-uv sync
-```
-
-若在 Google Colab 中 widget 沒有顯示，請重新執行第一個「環境設定」cell，必要時重啟 Colab runtime 後再由上到下重新執行 Notebook。
-
-### Matplotlib 圖表沒有出現
-
-本機 Jupyter 請確認已安裝 `matplotlib`，並重新執行 Notebook 儲存格：
-
-```bash
-uv sync
-```
-
-Google Colab 請重新執行第一個「環境設定」cell，再由上到下重新執行 Notebook。
-
-### 按下計算後顯示未選擇日期
-
-請先在「出生日期」欄位選擇日期，再按下計算按鈕。
-
-### Colab 是否需要 uv
-
-不需要。`uv sync` 僅用於本機開發與本機 Jupyter 執行；Google Colab 會使用 Notebook 內建的環境設定 cell 安裝必要套件。
-
-## 投資風險聲明
-
-本 Notebook 內容僅供課堂學習、資料視覺化與投資風格分析練習，不構成任何投資建議、買賣推薦或收益保證。實際投資前，應自行評估市場風險、資金配置、投資期限與個人承受能力。
+| 作業 | 摘要 | 入口 |
+| --- | --- | --- |
+| HW1 | 生日五行金融密碼計算器，依生日數字密碼判斷河圖五行屬性。 | [`HW1/README.md`](HW1/README.md) |
+| HW2 | 待新增。 | 待新增 |
+| HW3 | 待新增。 | 待新增 |
