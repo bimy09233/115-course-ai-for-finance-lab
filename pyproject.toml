@@ -9,4 +9,5 @@ dependencies = [
     "jupyterlab>=4.0.0",
     "matplotlib>=3.8.0",
     "notebook>=7.0.0",
+    "pandas>=3.0.3",
 ]
