@@ -78,6 +78,7 @@ def compound_interest_calculator():
         interest = P * interest_rate
         total_interest = P * (1 + interest_rate)**i - P
         
+        print(f'{j}利率：{interest_rate}')
         print(f'每{j}利息：{interest:,.0f}')
         print(f'總利息：{total_interest:,.0f}')
         print('-----------------------')
