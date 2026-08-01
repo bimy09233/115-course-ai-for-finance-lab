@@ -8,4 +8,4 @@
 | --- | --- | --- |
 | HW1 | 生日五行金融密碼計算器，依生日數字密碼判斷河圖五行屬性。 | [`HW1/README.md`](HW1/README.md) |
 | HW2 | 房貸試算、質數篩選與複利計息練習。 | [`HW2/README.md`](HW2/README.md) |
-| HW3 | 待新增。 | 待新增 |
+| HW3 | 選擇權策略、Put-Call Parity 與套利分析。 | [`HW3/README.md`](HW3/README.md) |
