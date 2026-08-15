@@ -17,6 +17,39 @@ WUXING_BY_DIGIT = {
     8: "水",
 }
 
+WUXING_INVESTMENT_ADVICE = {
+    "木": {
+        "投資性格": "重視成長與長期累積",
+        "適合策略": "定期定額、長線布局",
+        "可關注資產類型": "寬基指數與成長型資產",
+        "行為提醒": "避免追高，定期檢視配置。",
+    },
+    "火": {
+        "投資性格": "行動果斷，對趨勢敏感",
+        "適合策略": "核心－衛星策略",
+        "可關注資產類型": "趨勢或成長主題資產",
+        "行為提醒": "限制單一主題與短線部位。",
+    },
+    "土": {
+        "投資性格": "重視穩定與安全感",
+        "適合策略": "穩健分散、重視現金流",
+        "可關注資產類型": "債券、股利型與平衡型資產",
+        "行為提醒": "避免因過度保守錯失長期成長。",
+    },
+    "金": {
+        "投資性格": "紀律嚴謹，重視分析",
+        "適合策略": "依規則配置、重視估值",
+        "可關注資產類型": "高品質債券、價值或股利型資產",
+        "行為提醒": "避免過度追求完美而延後執行。",
+    },
+    "水": {
+        "投資性格": "彈性高，對資訊敏感",
+        "適合策略": "保留流動性、全球分散",
+        "可關注資產類型": "現金等價物、債券與全球型資產",
+        "行為提醒": "避免因市場訊息頻繁調整部位。",
+    },
+}
+
 
 def split_digits(number: int) -> list[int]:
     """將整數拆成各位數字清單。"""
@@ -57,6 +90,18 @@ def format_wuxing_table(selected_digit: int | None = None) -> str:
         ]
         rows.append(f"{element}：{', '.join(digits)}")
     return "\n".join(rows)
+
+
+def get_investment_advice(element: str) -> dict[str, str]:
+    """取得指定五行的性格導向投資建議。"""
+    return WUXING_INVESTMENT_ADVICE[element]
+
+
+def format_investment_advice(element: str) -> str:
+    """將指定五行的投資建議格式化成 terminal 文字。"""
+    advice = get_investment_advice(element)
+    lines = [f"{label}：{content}" for label, content in advice.items()]
+    return "\n".join(lines)
 
 
 def parse_birthday(value: str) -> date:
@@ -100,6 +145,8 @@ def print_result(birthday: date) -> None:
     print(format_steps(steps))
     print(f"\n生日數字密碼：{password}")
     print(f"河圖五行屬性：{element}")
+    print(f"\n{element}行投資建議：")
+    print(format_investment_advice(element))
     print("\n河圖五行數字對應表：")
     print(format_wuxing_table(password))
 
